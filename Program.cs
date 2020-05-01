@@ -17,7 +17,18 @@ namespace Matrix
         {
             
         }
-        
+        static char[] World()
+        {
+            string world = "";
+            for (char i = 'a'; i <= 'z'; i++)
+            {
+                if (new Random().Next(0, 4) == 1)
+                {
+                    world += i;
+                }
+            }
+            return world.ToCharArray();
+        }
         static void Show(List<MyWorld> symbols)
         {
             int w = 0;
