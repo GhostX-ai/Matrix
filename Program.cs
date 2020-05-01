@@ -15,7 +15,28 @@ namespace Matrix
     {
         static void Main(string[] args)
         {
-            
+            Console.BackgroundColor = ConsoleColor.Black;
+            List<MyWorld> li = new List<MyWorld>();
+            while (true)
+            {
+                Task.Run(() =>
+                {
+                    for (int i = 0; i < new Random().Next(100, 1000); i++)
+                    {
+                        li.Add(new MyWorld()
+                        {
+                            Left = new Random().Next(100),
+                            world = World(),
+                            Top = new Random().Next(2, 8)
+                        });
+                    }
+                }).Wait();
+                Task.Run(() =>
+                {
+                    Show(li);
+                    li.Clear();
+                }).Wait();
+            }
         }
         static char[] World()
         {
